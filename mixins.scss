@@ -1,0 +1,44 @@
+@mixin iconize($img, $w, $h, $dir){
+    background: url($img) no-repeat;
+    background-size: $w $h;
+    @if $dir == 'left'{
+        padding-left: $w;
+        background-position: left center;
+    }
+    @else if $dir == 'right'{
+        padding-right: $w;
+        background-position: right center;
+    }
+    @else if $dir == 'top'{
+        padding-top: $h;
+        background-position: center top;
+    }
+    @else if $dir == 'bottom'{
+        padding-bottom: $h;
+        background-position: center bottom;
+    }
+    @else {
+        padding-left: $w;
+        background-position: left center;
+    }
+}
+
+@mixin flex-set($dir, $center){
+  display: flex;
+  flex-flow: $dir wrap;
+  @if $center == 'true'{
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@mixin hidden-content($w, $h, $img:'false'){
+    @if $img != 'false'{
+        background: url($img) no-repeat;
+        background-size: $w $h;
+    }
+    display: block;
+    font-size: 0;
+    height:$h;
+    width:$w;
+}
